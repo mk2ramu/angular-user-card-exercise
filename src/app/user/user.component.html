@@ -1,0 +1,23 @@
+
+<form (ngSubmit)="onSubmit(userRef)" #userRef=ngForm>
+  <div class="form-group">
+    <label for="label">Enter user name</label>
+    <input type="text" class="form-control" name="username" ngModel required/>
+  </div>
+    <button type="submit" class="btn btn-primary" [disabled]="userRef.invalid">Submit</button>
+</form>
+<hr />
+<div class="alert alert-danger" *ngIf="error">{{error}}</div>
+<!-- <app-repository></app-repository> -->
+<table class="table table-bordered">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Fullname</th>
+  </tr>
+ 
+  <tr *ngFor="let useD of data" [class]="(useD.name == 'star') ? 'yellow':'grey'">
+      <app-repository [receievedData] = "useD"></app-repository>
+  </tr>
+</table>
+
